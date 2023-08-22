@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +15,7 @@ export class AuthService {
   }
 
   GetAllRoles(){
-    return this.http.get("https://json-test-beryl.vercel.app/role");
+    return this.http.get('https://json-test-beryl.vercel.app/role');
   }
 
   GetUserRole(){
@@ -24,11 +23,11 @@ export class AuthService {
   }
 
   GetForLogin(code:any){
-    return this.http.get(this.apiUrl + "?name=" + code);
+    return this.http.get(this.apiUrl + '?name=' + code);
   }
 
   GetForUpdate(code: any){
-    return this.http.get(this.apiUrl + "/" + code);
+    return this.http.get(this.apiUrl + '/' + code);
   }
 
   RegistrationProcedure(inputData: any){
