@@ -8,7 +8,6 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  //apiUrl = 'http://localhost:3000/user';
   apiUrl = 'https://json-test-beryl.vercel.app/user';
 
   GetAll(){
@@ -16,7 +15,7 @@ export class AuthService {
   }
 
   GetAllRoles(){
-    return this.http.get(this.apiUrl + "https://json-test-beryl.vercel.app/role");
+    return this.http.get("https://json-test-beryl.vercel.app/role");
   }
 
   GetUserRole(){
