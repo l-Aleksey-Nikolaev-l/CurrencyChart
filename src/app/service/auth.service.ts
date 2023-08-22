@@ -8,14 +8,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  apiUrl = 'http://localhost:3000/user';
+  //apiUrl = 'http://localhost:3000/user';
+  apiUrl = 'https://json-test-beryl.vercel.app/user';
 
   GetAll(){
     return this.http.get(this.apiUrl);
   }
 
   GetAllRoles(){
-    return this.http.get('http://localhost:3000/role');
+    return this.http.get(this.apiUrl + "https://json-test-beryl.vercel.app/role");
   }
 
   GetUserRole(){
@@ -23,11 +24,11 @@ export class AuthService {
   }
 
   GetForLogin(code:any){
-    return this.http.get(this.apiUrl + '?name=' + code);
+    return this.http.get(this.apiUrl + "?name=" + code);
   }
 
   GetForUpdate(code: any){
-    return this.http.get(this.apiUrl + '/' + code);
+    return this.http.get(this.apiUrl + "/" + code);
   }
 
   RegistrationProcedure(inputData: any){
