@@ -1,0 +1,52 @@
+<div class="userList">
+  <section class="mat-elevation-z8">
+    <table mat-table matSort [dataSource]="dataSource">
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell  *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="e_mail">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> E-Mail </th>
+        <td mat-cell *matCellDef="let element"> {{element.e_mail}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> Role </th>
+        <td mat-cell *matCellDef="let element"> {{element.role === ''?'Un Assigned' : element.role}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.isActive?'Active':'In Active'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+          <button class="updateUserButton" (click)="ActionWithUser(UserUpdateComponent, element.id)" mat-stroked-button color="primary">Update</button>
+        </td>
+      </ng-container>
+
+    </table>
+  </section>
+
+  <hr>
+
+  <section class="tableFooter">
+    <mat-paginator [pageSize]="5"
+                   [pageSizeOptions]="[5, 10]">
+    </mat-paginator>
+    <button class="addUserButton" (click)="ActionWithUser(UserAddComponent, '')" mat-stroked-button color="warn">Add A New User</button>
+  </section>
+
+</div>

@@ -1,0 +1,45 @@
+mat-card {
+  background-color: #e7e6e6;
+}
+
+.updatingForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.controlButtons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+mat-slide-toggle {
+  margin-bottom: 24px;
+}
+
+.userActionLabel {
+  margin: 12px 0 8px 0;
+  font-size: 16px;
+}
+
+.userActionLabel.red {
+  color: red;
+}
+
+.userActionLabel.green {
+  color: green;
+}
+
+.mat-mdc-slide-toggle.mat-accent {
+  --mdc-switch-selected-focus-state-layer-color: #358b20;
+  --mdc-switch-selected-handle-color: #358b20;
+  --mdc-switch-selected-hover-state-layer-color: #358b20;
+  --mdc-switch-selected-pressed-state-layer-color: #358b20;
+  --mdc-switch-selected-focus-handle-color: #358b20;
+  --mdc-switch-selected-hover-handle-color: #358b20;
+  --mdc-switch-selected-pressed-handle-color: #358b20;
+
+  --mdc-switch-selected-focus-track-color: rgba(65, 216, 27, 0.5);
+  --mdc-switch-selected-hover-track-color: rgba(65, 216, 27, 0.5);
+  --mdc-switch-selected-pressed-track-color: rgba(65, 216, 27, 0.5);
+  --mdc-switch-selected-track-color: rgba(65, 216, 27, 0.5);
+}

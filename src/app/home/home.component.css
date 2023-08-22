@@ -1,0 +1,125 @@
+mat-card {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translate(-50%);
+  width: 80%;
+  height: 75%;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.highcharts-background,
+g.highcharts-scrollbar rect {
+  cursor: pointer !important;
+}
+
+.chartContainer {
+  display: flex;
+  height: 100%;
+}
+
+.highChart {
+  display: block;
+  width: 100%;
+}
+
+.currencyControls {
+  min-width: 140px;
+  height: 100%;
+  margin: 0 0 0 2px;
+
+}
+
+.sortButton {
+  width: 100%;
+  height: 36px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  background-color: #eee;
+}
+
+.currencyContainer {
+  background-color: #ffffff;
+  overflow-y: auto;
+  width: 100%;
+  height: calc(100% - 36px); /*36px it is from sortButton => height*/
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 16px 0 16px;
+}
+
+li{
+  margin: 10px 0 10px 0;
+}
+
+.chartGraphSlider {
+  display: flex;
+  align-items: center;
+  margin-left: 36px;
+}
+
+
+.chartControls {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  margin: 2px 0 0 0;
+  width: 100%;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 140, 255, 0.82);
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(16px);
+}
+
+.slider.round {
+  border-radius: 22px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.labels {
+  margin: 0 8px 0 8px;
+}

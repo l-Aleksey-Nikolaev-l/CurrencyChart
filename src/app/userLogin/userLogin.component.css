@@ -1,0 +1,32 @@
+mat-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50vw;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+  color: #d1d1d1;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginButton {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  border: none;
+  outline: 1px solid rgba(156, 210, 228, 0.5);
+  color: #9cd2e4;
+  font-size: 16px;
+}
+
+.loginButton:hover {
+  background-color: rgba(156, 210, 228, 0.5);
+  color: #d1d1d1;
+}

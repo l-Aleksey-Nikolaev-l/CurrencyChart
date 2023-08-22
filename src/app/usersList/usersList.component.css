@@ -1,0 +1,51 @@
+.userList {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.mat-elevation-z8 {
+  width: 50%;
+  min-width: 600px;
+}
+
+.mat-column-id {
+  padding: 24px;
+  color: black;
+  font-weight: 500;
+  border-right: 1px solid #e7e6e6;
+  text-align: center;
+}
+
+.tableFooter {
+  background-color: #ffffff;
+  min-width: 600px;
+  height: 60px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+mat-paginator {
+  position: absolute;
+}
+
+.updateUserButton {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 20px;
+}
+
+hr {
+  margin: 0;
+  border-top: 2px solid #e7e6e6;
+}
+
+.addUserButton {
+  position: absolute;
+  right: 0;
+  margin: 12px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 20px;
+}

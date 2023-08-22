@@ -1,0 +1,50 @@
+<mat-card>
+
+  <section class="chartContainer">
+
+    <highcharts-chart class="highChart"
+      *ngIf="chartOptions"
+      [Highcharts]="highcharts"
+      [options]="chartOptions"
+      [(update)]="updateFlag"
+      [callbackFunction]="chartCallback"
+      [constructorType] = "'stockChart'">
+    </highcharts-chart>
+
+    <section class="currencyControls">
+      <button class="sortButton" mat-flat-button (click)="SortCurr()">Sort</button>
+      <div class="currencyContainer" >
+        <ul>
+          <li *ngFor="let legend of legends">
+            <mat-checkbox (change)="CheckTen($event)"
+                          [(ngModel)]="legend.completed"
+                          [aria-label]="legend.name"
+                          color="primary">
+              {{legend.name}}
+            </mat-checkbox>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+  </section>
+
+  <section class="chartControls">
+    <mat-checkbox (change)="SkippedDates()" [(ngModel)]="skippedDates">Show skipped dates</mat-checkbox>
+
+    <div class="chartGraphSlider">
+      <label class="labels">Spline</label>
+      <label class="switch">
+        <input type="checkbox" (change)="GraphicsType()" [(ngModel)]="graphType">
+        <span class="slider round"></span>
+      </label>
+      <label class="labels">Lines</label>
+    </div>
+
+
+  </section>
+
+</mat-card>
+
+
+

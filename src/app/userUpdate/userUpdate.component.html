@@ -1,0 +1,53 @@
+<mat-card>
+  <mat-card-header>
+    <h1>Update User Information</h1>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form class="updatingForm" [formGroup]="updateForm" (ngSubmit)="UserAccount($event)">
+      <mat-form-field>
+        <mat-label>User ID</mat-label>
+        <input readonly matInput formControlName="id">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input type="text" matInput formControlName="password">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>E-Mail</mat-label>
+        <input type="e_mail" matInput formControlName="e_mail">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="accessForComponent">
+        <mat-label>Select user role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option *ngFor="let item of roleList" [value]="item.code">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <label *ngIf="accessForComponent" for="userAction" class="userActionLabel"
+             [class.red]="userActionLabelColor === 'red'"
+             [class.green]="userActionLabelColor === 'green'"
+             >{{this.userAction}}
+      </label>
+
+      <mat-slide-toggle *ngIf="accessForComponent" (change)="UserAction()" id="userAction" formControlName="isActive" color="accent"></mat-slide-toggle>
+
+      <section class="controlButtons">
+        <button type="submit" name="Update" mat-stroked-button color="primary">Update</button>
+        <button *ngIf="accessForComponent" type="submit" name="Delete" mat-flat-button color="warn">Delete</button>
+        <button mat-dialog-close  mat-stroked-button color="warn">Close</button>
+      </section>
+
+    </form>
+  </mat-card-content>
+</mat-card>

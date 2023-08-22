@@ -1,0 +1,48 @@
+<mat-card>
+  <mat-card-header>
+    <h1>Add User Information</h1>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="registrationForm" [formGroup]="registrationForm" (ngSubmit)="UserAccount($event)">
+      <mat-form-field>
+        <mat-label>User ID</mat-label>
+        <input matInput formControlName="id">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input type="text" matInput formControlName="password">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>E-Mail</mat-label>
+        <input type="e_mail" matInput formControlName="e_mail">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Select user role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option *ngFor="let item of roleList" [value]="item.code">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <label class="userActionLabel"
+             [class.red]="userActionLabelColor === 'red'"
+             [class.green]="userActionLabelColor === 'green'"
+             for="userAction">{{this.userAction}}</label>
+      <mat-slide-toggle class="" (change)="UserAction()" id="userAction" formControlName="isActive" color="accent"></mat-slide-toggle>
+
+      <section class="controlButtons">
+        <button type="submit" name="AddUser" mat-stroked-button color="primary">Add User</button>
+        <button mat-dialog-close  mat-stroked-button color="warn">Close</button>
+      </section>
+    </form>
+  </mat-card-content>
+</mat-card>

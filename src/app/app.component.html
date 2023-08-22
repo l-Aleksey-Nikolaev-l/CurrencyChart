@@ -1,0 +1,11 @@
+<div class="toolbar" *ngIf="isMenuRequired" role="banner">
+  <span>Welcome to currency chart</span>
+  <a class="homeButton" mat-button routerLink="">Home</a>
+  <a class="userButton" mat-button *ngIf="isAdmin" routerLink="/user">User</a>
+  <div class="spacer"></div>
+  <a class="logOutButton" mat-button routerLink="/Login">LogOut</a>
+</div>
+
+<div class="content" role="main">
+  <router-outlet></router-outlet>
+</div>

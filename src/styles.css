@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
+
+* {
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+}
+
+html, body {
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-image: url("/assets/img/bgLogin.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(8px);
+  height: 100vh;
+}
+
+.copyright{
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+}
+
+.copyright>p{
+  margin: 0;
+}

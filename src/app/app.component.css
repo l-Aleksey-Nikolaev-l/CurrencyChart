@@ -1,0 +1,60 @@
+:host {
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.spacer {
+  flex: 1;
+}
+
+span {
+  font-family: "Unica One", arial, helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  padding-left: 24px;
+  margin-right: 24px;
+}
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(25, 118, 210, 0.3);
+  color: white;
+  font-weight: 600;
+}
+
+a,
+a:visited,
+a:hover {
+  color: #333;
+  text-decoration: none;
+  margin: 8px
+}
+
+a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.homeButton, .userButton, .logOutButton {
+  background-color: #eee;
+  font-size: 16px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  padding: 16px;
+}
+
+.homeButton:hover, .userButton:hover {
+  background-color: rgba(228, 228, 228, 0.5);
+}
+
+.logOutButton:hover {
+  background-color: rgba(210, 30, 30, 0.75);
+}
