@@ -1,0 +1,35 @@
+I used Angular framework 16 for the project
+and WebStorm Environment.
+
+When you go to main page you will find
+only one login form. If your account created
+and not blocked you will go to the chart page.
+
+For currencies chart you can use files with
+data more than 1 year 
+(I tested application with data of 23 years).
+The file with data is located in assets/data
+folder and can be replaced anytime.
+A file with data can contains empty cells and
+skipped dates because application can create
+graphics with skipped dates and data.
+
+You can change graphics view by slider button
+between spline and lines. Also, you can zooming
+chart by buttons, calenders, special viewbar
+under chart and by mouse cursor selected area
+on chart. If you hold Shift + Left Mouse Button
+you can panning chart.
+
+If you are logged from account with admin access,
+you will find (Users) button in the top of the panel and
+you won't find it if your account has only user access.
+A user managment form it is the form where you
+can add, update and delete users information.
+You can't change UserID parameter after creating
+a new user account. But, you can change everything else.
+You can't delete Admin user account, but you can
+delete accounts with admin access.
+
+When you press the button (Log Out), you will go
+to the login page.
