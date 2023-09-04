@@ -34,7 +34,7 @@ export class UsersListComponent {
     });
   }
 
-  displayedColumns: string[] = ['id', 'name', 'e_mail', 'role', 'status', 'action'];
+  displayedColumns: string[] = ['id', 'username', 'e_mail', 'role', 'isActive', 'action'];
 
   ActionWithUser(componentName:any, code:any){
     const popUpWindow = this.dialog.open(componentName, {

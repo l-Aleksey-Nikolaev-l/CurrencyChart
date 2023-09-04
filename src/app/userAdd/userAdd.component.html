@@ -3,7 +3,7 @@
     <h1>Add User Information</h1>
   </mat-card-header>
   <mat-card-content>
-    <form class="registrationForm" [formGroup]="registrationForm" (ngSubmit)="UserAccount($event)">
+    <form name="AddUser" class="registrationForm" [formGroup]="registrationForm" (ngSubmit)="UserAccount($event)">
 
       <mat-form-field>
         <mat-label>Name</mat-label>

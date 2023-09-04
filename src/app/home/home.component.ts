@@ -42,6 +42,9 @@ export class HomeComponent implements OnInit{
       marginTop: 90,
       marginLeft: 40,
       marginRight: 100,
+      accessibility:{
+        enabled: false
+      },
       panning: {
         enabled: true,
         type: "x"

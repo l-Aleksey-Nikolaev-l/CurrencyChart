@@ -4,7 +4,7 @@
   </mat-card-header>
 
   <mat-card-content>
-    <form class="loginForm" [formGroup]="LoginForm" (ngSubmit)="ProceedLogin()">
+    <form name="LoginUser" class="loginForm" [formGroup]="LoginForm" (ngSubmit)="ProceedLogin()">
 
       <mat-form-field>
         <mat-label>Name</mat-label>
@@ -13,7 +13,7 @@
 
       <mat-form-field class="passwordInput">
         <mat-label>Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="off">
         <a mat-icon-button matSuffix (click)="hide = !hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </a>

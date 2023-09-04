@@ -4,7 +4,7 @@
   </mat-card-header>
 
   <mat-card-content>
-    <form class="updatingForm" [formGroup]="updateForm" (ngSubmit)="UserAccount($event)">
+    <form name="UpdateUser" class="updatingForm" [formGroup]="updateForm" (ngSubmit)="UserAccount($event)">
       <mat-form-field>
         <mat-label>User ID</mat-label>
         <input readonly matInput formControlName="id">
@@ -32,7 +32,7 @@
         </mat-select>
       </mat-form-field>
 
-      <span *ngIf="accessForComponent" for="userActive" class="userActionLabel"
+      <span *ngIf="accessForComponent" class="userActionLabel"
              [class.red]="userActionLabelColor === 'red'"
              [class.green]="userActionLabelColor === 'green'"
              >{{this.userAction}}
