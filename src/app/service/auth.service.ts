@@ -2,47 +2,47 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  apiUrl = 'https://json-test-beryl.vercel.app/user';
+  apiUrl = 'https://json-test-beryl.vercel.app/';
 
   GetAll(){
-    return this.http.get(this.apiUrl);
+    return this.http.get(this.apiUrl + "users");
   }
 
   GetAllRoles(){
-    return this.http.get('https://json-test-beryl.vercel.app/role');
+    return  this.http.get(this.apiUrl + "roles");
   }
 
-  GetUserRole(){
-    return sessionStorage.getItem("userRole") === "admin";
-  }
-
-  GetForLogin(code:any){
-    return this.http.get(this.apiUrl + '?name=' + code);
+  GetForLogin(form:any){
+    return  this.http.post(this.apiUrl + "login", form);
   }
 
   GetForUpdate(code: any){
-    return this.http.get(this.apiUrl + '/' + code);
+    return this.http.post(this.apiUrl + "getUserInfo", code);
   }
 
-  RegistrationProcedure(inputData: any){
-    return this.http.post(this.apiUrl, inputData);
+  RegistrationProcedure(newUser: any){
+    return this.http.post(this.apiUrl + "registration", newUser);
   }
 
-  UpdatingProcedure(code: any, inputData: any){
-    return this.http.put(this.apiUrl + "/" + code, inputData);
+  UpdatingProcedure(form: any){
+    return this.http.post(this.apiUrl + "update", form);
   }
 
-  DeletingProcedure(code: any, inputData: any){
-    return this.http.delete(this.apiUrl + "/" + code, inputData);
+  DeletingProcedure(form: any){
+    return this.http.delete(this.apiUrl, {body:form});
+  }
+
+  GetUserRole(){
+    return sessionStorage.getItem("role") === "admin";
   }
 
   CheckLogged(){
-    return sessionStorage.getItem("userName") != null;
+    return sessionStorage.getItem("username") != null;
   }
 }

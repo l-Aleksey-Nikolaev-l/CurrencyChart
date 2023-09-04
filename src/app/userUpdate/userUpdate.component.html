@@ -12,7 +12,7 @@
 
       <mat-form-field>
         <mat-label>Name</mat-label>
-        <input matInput formControlName="name">
+        <input matInput formControlName="username">
       </mat-form-field>
 
       <mat-form-field>
@@ -25,22 +25,20 @@
         <input type="e_mail" matInput formControlName="e_mail">
       </mat-form-field>
 
-      <mat-form-field *ngIf="accessForComponent">
+      <mat-form-field style="padding: 0" *ngIf="accessForComponent">
         <mat-label>Select user role</mat-label>
-        <mat-select formControlName="role">
-          <mat-option *ngFor="let item of roleList" [value]="item.code">
-            {{item.name}}
-          </mat-option>
+        <mat-select style="padding: 0" formControlName="role">
+          <mat-option *ngFor="let role of roleList" [value]="role.code">{{role.name}}</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <label *ngIf="accessForComponent" for="userAction" class="userActionLabel"
+      <span *ngIf="accessForComponent" for="userActive" class="userActionLabel"
              [class.red]="userActionLabelColor === 'red'"
              [class.green]="userActionLabelColor === 'green'"
              >{{this.userAction}}
-      </label>
+      </span>
 
-      <mat-slide-toggle *ngIf="accessForComponent" (change)="UserAction()" id="userAction" formControlName="isActive" color="accent"></mat-slide-toggle>
+      <mat-slide-toggle *ngIf="accessForComponent" (change)="UserAction()" id="userActive" formControlName="isActive" color="accent"></mat-slide-toggle>
 
       <section class="controlButtons">
         <button type="submit" name="Update" mat-stroked-button color="primary">Update</button>

@@ -44,7 +44,7 @@ export class UsersListComponent {
       minWidth: "300px",
       maxWidth: "400px",
       data:{
-        userCode:code
+        userCode: {code}
       }
     })
     popUpWindow.afterClosed().subscribe(() => {

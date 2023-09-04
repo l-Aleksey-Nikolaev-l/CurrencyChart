@@ -27,7 +27,7 @@ export class UserUpdateComponent implements OnInit {
 
   updateForm = this.formBuilder.group({
     id:this.formBuilder.control('', Validators.required),
-    name:this.formBuilder.control('', Validators.required),
+    username:this.formBuilder.control('', Validators.required),
     password:this.formBuilder.control('', Validators.required),
     e_mail:this.formBuilder.control('', Validators.required),
     role:this.formBuilder.control('', Validators.required),
@@ -39,23 +39,21 @@ export class UserUpdateComponent implements OnInit {
       this.roleList = rolesFromDB;
     });
 
-    if(this.data.userCode != null || this.data.userCode != ""){
-      this.services.GetForUpdate(this.data.userCode).subscribe(userFromDB =>{
-        this.editData = userFromDB;
-        this.updateForm.setValue({
-          id:this.editData.id,
-          name:this.editData.name,
-          password:this.editData.password,
-          e_mail:this.editData.e_mail,
-          role:this.editData.role,
-          isActive:this.editData.isActive
-        })
-        if(this.updateForm.value.id !== "Admin"){
-          this.accessForComponent = true;
-        }
-        this.UserAction();
-      });
-    }
+    this.services.GetForUpdate(this.data.userCode).subscribe(userFromDB => {
+      this.editData = userFromDB;
+      this.updateForm.setValue({
+        id: this.editData.id,
+        username: this.editData.username,
+        password: this.editData.password,
+        e_mail: this.editData.e_mail,
+        role: this.editData.role,
+        isActive: this.editData.isActive
+      })
+      if (Number(this.updateForm.value.id) !== 0) {
+        this.accessForComponent = true;
+      }
+      this.UserAction();
+    });
   }
 
   UserAction(){
@@ -71,13 +69,13 @@ export class UserUpdateComponent implements OnInit {
 
   UserAccount(event:any){
     if(event.submitter.name === "Update" && this.updateForm.valid){
-      this.services.UpdatingProcedure(this.updateForm.value.id, this.updateForm.value).subscribe(() => {
-        this.toastr.success(this.updateForm.value.name + "'s information updated", "Done!");
+      this.services.UpdatingProcedure(this.updateForm.value).subscribe((result:any) => {
+        this.toastr.success(this.updateForm.value.username + "'s information updated", result);
       });
     }
     else if(event.submitter.name === "Delete"){
-      this.services.DeletingProcedure(this.updateForm.value.id, this.updateForm.value).subscribe(() =>{
-        this.toastr.success("Account " + this.updateForm.value.name + " have been deleted", "Done!");
+      this.services.DeletingProcedure(this.updateForm.value).subscribe((result:any) =>{
+        this.toastr.success("Account " + this.updateForm.value.username + " have been deleted", result);
       });
     }
     this.dialogRef.close();

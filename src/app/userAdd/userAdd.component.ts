@@ -24,8 +24,7 @@ export class UserAddComponent implements OnInit {
               private dialogRef:MatDialogRef<UserAddComponent>) {}
 
   registrationForm = this.formBuilder.group({
-    id:this.formBuilder.control('', Validators.compose([Validators.required, Validators.minLength(1)])),
-    name:this.formBuilder.control('', Validators.required),
+    username:this.formBuilder.control('', Validators.required),
     password:this.formBuilder.control('', Validators.required),
     e_mail:this.formBuilder.control('', Validators.compose([Validators.required, Validators.email])),
     role:this.formBuilder.control('', Validators.required),
@@ -57,10 +56,13 @@ export class UserAddComponent implements OnInit {
 
   RegistrationProcedure(){
     if(this.registrationForm.valid){
-      this.services.RegistrationProcedure(this.registrationForm.value).subscribe(() => {
-        this.toastr.success("You added user " + this.registrationForm.value.name,"Done!");
-        this.dialogRef.close();
-      });
+      this.services.RegistrationProcedure(this.registrationForm.value).subscribe({
+        next:(result:any) => {
+          this.toastr.success("You added user " + this.registrationForm.value.username, result);
+          this.dialogRef.close();
+        },
+        error:(err:any) => this.toastr.error(err.error)
+        });
     }
     else {
       this.toastr.warning("Please, enter valid data");

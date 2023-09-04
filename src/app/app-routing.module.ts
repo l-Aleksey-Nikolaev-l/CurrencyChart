@@ -9,7 +9,8 @@ import { UserLoginComponent } from "./userLogin/userLogin.component";
 const routes: Routes = [
   {
     path:"",
-    component: HomeComponent, canActivate:[AuthGuard]
+    component: HomeComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:"Login",
@@ -17,8 +18,14 @@ const routes: Routes = [
   },
   {
     path:"user",
-    component: UsersListComponent, canActivate:[AuthGuard]
+    component: UsersListComponent,
+    canActivate:[AuthGuard]
   },
+  {
+    path:"**",
+    redirectTo: "",
+    canActivate:[AuthGuard]
+  }
 ];
 
 @NgModule({

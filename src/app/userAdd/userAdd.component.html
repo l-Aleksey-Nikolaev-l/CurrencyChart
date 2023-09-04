@@ -4,14 +4,10 @@
   </mat-card-header>
   <mat-card-content>
     <form class="registrationForm" [formGroup]="registrationForm" (ngSubmit)="UserAccount($event)">
-      <mat-form-field>
-        <mat-label>User ID</mat-label>
-        <input matInput formControlName="id">
-      </mat-form-field>
 
       <mat-form-field>
         <mat-label>Name</mat-label>
-        <input matInput formControlName="name">
+        <input matInput formControlName="username">
       </mat-form-field>
 
       <mat-form-field>

@@ -21,39 +21,22 @@ export class UserLoginComponent {
   }
 
   LoginForm = this.formBuilder.group({
-    userName: this.formBuilder.control('', Validators.required),
+    username: this.formBuilder.control('', Validators.required),
     password: this.formBuilder.control('', Validators.required),
   });
 
   ProceedLogin() {
-    if (this.LoginForm.valid) {
-      this.services.GetForLogin(this.LoginForm.value.userName).subscribe({
-        next:(serverData)=>this.CompareInformation(serverData)
+    if(this.LoginForm.valid) {
+      this.services.GetForLogin(this.LoginForm.value).subscribe({
+        next:(serverData)=>this.CompareInformation(serverData),
+        error: (err) => this.toastr.error(err.error)
       });
     }
   }
 
   CompareInformation(serverData:any){
-    if(serverData.length < 1) {
-      this.toastr.error("Oops, wrong input");
-      return;
-    }
-    else {
-      for(let i = 0; i < serverData.length; i++){
-        const userData = serverData[i];
-        if(userData.name === this.LoginForm.value.userName && userData.password === this.LoginForm.value.password){
-          if(userData.isActive === true) {
-            sessionStorage.setItem('userName', userData.name);
-            sessionStorage.setItem('userRole', userData.role);
-            this.router.navigate(['']).then();
-          }
-          else {
-            this.toastr.error("Oops, your account is not active now");
-          }
-          return;
-        }
-      }
-      this.toastr.error("Oops, wrong input");
-    }
+    sessionStorage.setItem('username', serverData.username);
+    sessionStorage.setItem('role', serverData.role);
+    this.router.navigate(['']).then();
   }
 }
