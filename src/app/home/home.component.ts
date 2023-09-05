@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit{
   chartReference: any;
   updateFlag: boolean = true;
 
-
   dataInJASON: any;
   currencyObjects: any[] = [];
   currencyDates: any[] = [];
@@ -42,9 +41,6 @@ export class HomeComponent implements OnInit{
       marginTop: 90,
       marginLeft: 40,
       marginRight: 100,
-      accessibility:{
-        enabled: false
-      },
       panning: {
         enabled: true,
         type: "x"
@@ -55,6 +51,9 @@ export class HomeComponent implements OnInit{
     title: { text: "Currency range of Hungarian National bank", y: 30 },
     subtitle:{ text: "National currency is Forint (HUF)", y: 50},
     credits: { enabled: false },
+    accessibility:{
+      enabled: false
+    },
     tooltip: {
       valueDecimals: 2,
       valueSuffix: " HUF",
@@ -239,9 +238,9 @@ export class HomeComponent implements OnInit{
   CreateDates(){
     this.currencyDates = [];
     let objectWithDates = this.dataInJASON.slice(1);
-    objectWithDates.map((ee:any) => {
-      let ppp = Object.values(ee);
-      this.currencyDates.push(ppp[0])
+    objectWithDates.map((objectWithData:any) => {
+      let dataOnly = Object.values(objectWithData)[0];
+      this.currencyDates.push(dataOnly)
     });
     this.chartOptions.plotOptions.series.pointStart = new Date((this.currencyDates[0] - (25567 + 2)) * 86400 * 1000).getTime()
   }
@@ -313,7 +312,7 @@ export class HomeComponent implements OnInit{
   CheckTen(event:any){
     if(event.checked && this.showCurrencies.length >= 10){
       let checkBoxName = event.source.ariaLabel
-      let foundedIndex = this.legendsObject.findIndex(x => x.name === checkBoxName)
+      let foundedIndex = this.legendsObject.findIndex(legend => legend.name === checkBoxName)
       event.source._checked = false
       this.legendsObject[foundedIndex].completed = false;
       this.toastr.warning("You can't select more than 10 currencies","WARNING!")
@@ -326,7 +325,7 @@ export class HomeComponent implements OnInit{
     this.showCurrencies = [];
     this.legendsObject.map((legend) => {
       if(legend["completed"] === true){
-        let index = this.currencyObjects.findIndex(x => x.name === legend["name"])
+        let index = this.currencyObjects.findIndex(currency => currency.name === legend["name"])
         this.showCurrencies.push(this.currencyObjects[index]);
       }
     });
@@ -341,11 +340,11 @@ export class HomeComponent implements OnInit{
       while (this.chartReference.series.length > 0) {
         this.chartReference.series[0].remove(true);
       }
-      this.showCurrencies.map((eee) => {
-        this.chartReference.addSeries(eee)
+      this.showCurrencies.map((currency) => {
+        this.chartReference.addSeries(currency)
       });
       this.chartOptions.plotOptions.series.pointStart = new Date((this.currencyDates[0] - (25567 + 2)) * 86400 * 1000).getTime()
-    }, 200);
+    }, 400);
     this.updateFlag = true;
   }
 

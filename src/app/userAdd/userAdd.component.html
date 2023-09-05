@@ -5,35 +5,36 @@
   <mat-card-content>
     <form name="AddUser" class="registrationForm" [formGroup]="registrationForm" (ngSubmit)="UserAccount($event)">
 
-      <mat-form-field>
+      <mat-form-field id="userName">
         <mat-label>Name</mat-label>
         <input matInput formControlName="username">
       </mat-form-field>
 
-      <mat-form-field>
+      <mat-form-field id="userPassword">
         <mat-label>Password</mat-label>
         <input type="text" matInput formControlName="password">
       </mat-form-field>
 
-      <mat-form-field>
+      <mat-form-field id="userEmail">
         <mat-label>E-Mail</mat-label>
-        <input type="e_mail" matInput formControlName="e_mail">
+        <input type="e_mail" matInput formControlName="e_mail" required>
       </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Select user role</mat-label>
-        <mat-select formControlName="role">
-          <mat-option *ngFor="let item of roleList" [value]="item.code">
-            {{item.name}}
+      <mat-form-field id="userRole">
+        <mat-select placeholder="User role*" formControlName="role">
+          <mat-option *ngFor="let role of roleList" [value]="role.code">
+            {{role.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-      <label class="userActionLabel"
+      <span class="userActionLabel"
              [class.red]="userActionLabelColor === 'red'"
              [class.green]="userActionLabelColor === 'green'"
-             for="userAction">{{this.userAction}}</label>
-      <mat-slide-toggle class="" (change)="UserAction()" id="userAction" formControlName="isActive" color="accent"></mat-slide-toggle>
+             >{{this.userAction}}
+      </span>
+
+      <mat-slide-toggle (change)="UserAction()" id="userActive" formControlName="isActive" color="accent"></mat-slide-toggle>
 
       <section class="controlButtons">
         <button type="submit" name="AddUser" mat-stroked-button color="primary">Add User</button>

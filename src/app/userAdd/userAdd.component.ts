@@ -24,10 +24,10 @@ export class UserAddComponent implements OnInit {
               private dialogRef:MatDialogRef<UserAddComponent>) {}
 
   registrationForm = this.formBuilder.group({
-    username:this.formBuilder.control('', Validators.required),
-    password:this.formBuilder.control('', Validators.required),
-    e_mail:this.formBuilder.control('', Validators.compose([Validators.required, Validators.email])),
-    role:this.formBuilder.control('', Validators.required),
+    username:this.formBuilder.control("", Validators.required),
+    password:this.formBuilder.control("", Validators.required),
+    e_mail:this.formBuilder.control("", Validators.compose([Validators.required, Validators.email])),
+    role:this.formBuilder.control("", Validators.required),
     isActive:this.formBuilder.control(false, Validators.required)
   });
 
@@ -58,7 +58,7 @@ export class UserAddComponent implements OnInit {
     if(this.registrationForm.valid){
       this.services.RegistrationProcedure(this.registrationForm.value).subscribe({
         next:(result:any) => {
-          this.toastr.success("You added user " + this.registrationForm.value.username, result);
+          this.toastr.success(this.registrationForm.value.username + "'s account has been added", result);
           this.dialogRef.close();
         },
         error:(err:any) => this.toastr.error(err.error)

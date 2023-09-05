@@ -26,11 +26,11 @@ export class UserUpdateComponent implements OnInit {
               private dialogRef:MatDialogRef<UserUpdateComponent>) {}
 
   updateForm = this.formBuilder.group({
-    id:this.formBuilder.control('', Validators.required),
-    username:this.formBuilder.control('', Validators.required),
-    password:this.formBuilder.control('', Validators.required),
-    e_mail:this.formBuilder.control('', Validators.required),
-    role:this.formBuilder.control('', Validators.required),
+    id:this.formBuilder.control(""),
+    username:this.formBuilder.control("", Validators.required),
+    password:this.formBuilder.control("", Validators.required),
+    e_mail:this.formBuilder.control("", Validators.required),
+    role:this.formBuilder.control("", Validators.required),
     isActive:this.formBuilder.control(false)
   });
 
@@ -75,7 +75,7 @@ export class UserUpdateComponent implements OnInit {
     }
     else if(event.submitter.name === "Delete"){
       this.services.DeletingProcedure(this.updateForm.value).subscribe((result:any) =>{
-        this.toastr.success("Account " + this.updateForm.value.username + " have been deleted", result);
+        this.toastr.success(this.updateForm.value.username + "'s account has been deleted", result);
       });
     }
     this.dialogRef.close();
